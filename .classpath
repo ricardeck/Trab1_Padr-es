@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Application/src"/>
+	<classpathentry kind="src" path="FileNewOpenPlugin/src"/>
+	<classpathentry kind="src" path="Interfaces/src"/>
+	<classpathentry kind="lib" path="Application/plugins/FileNewOpenPlugin.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
