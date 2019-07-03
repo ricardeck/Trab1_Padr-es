@@ -5,6 +5,8 @@
  */
 package interfaces;
 
+import java.util.List;
+
 import javax.swing.JMenuItem;
 
 /**
@@ -13,6 +15,8 @@ import javax.swing.JMenuItem;
  */
 public interface IUIController {
     public boolean initialize();
+    
+    public List<IDocumentFactory> getPluginsByType();
 
     public JMenuItem addMenuItem(String menuName, String menuItemName);
 }

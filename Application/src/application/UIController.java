@@ -5,7 +5,10 @@
  */
 package application;
 
+import interfaces.IDocumentFactory;
 import interfaces.IUIController;
+
+import java.util.List;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -52,4 +55,10 @@ public class UIController implements IUIController {
     }
 
     private MainWindow mainWindow;
+
+	@Override
+	public List<IDocumentFactory> getPluginsByType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

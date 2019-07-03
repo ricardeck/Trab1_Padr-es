@@ -4,6 +4,7 @@
 	<classpathentry kind="src" path="Application/src"/>
 	<classpathentry kind="src" path="FileNewOpenPlugin/src"/>
 	<classpathentry kind="src" path="Interfaces/src"/>
+	<classpathentry kind="src" path="Textfactoryplugin"/>
 	<classpathentry kind="lib" path="Application/plugins/FileNewOpenPlugin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

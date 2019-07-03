@@ -13,4 +13,6 @@ public interface IDocumentFactory {
     // Metodos para criacao dos tres produtos
     
     public String getSupportedExtensions(); // return "gif|png|jpg";
+    
+    public boolean isExtensionSupported(String fileExtension);
 }
