@@ -16,5 +16,5 @@ public interface IPluginController {
 
 	public List<IPlugin> getLoadedPlugins();
 
-	public <T> List<T> getPluginsByType(T t);
+	public <T> List<T> getPluginsByType(T t, ICore core);
 }

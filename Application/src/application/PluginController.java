@@ -59,14 +59,13 @@ public class PluginController implements IPluginController {
 	}
 
 	@Override
-	public <T> List<T> getPluginsByType(T t) {
+	public <T> List<T> getPluginsByType(T t, ICore core) {
 		List<T> loadedPluginsByType = new ArrayList<>();
 
-		for (IPlugin plugin : this.getLoadedPlugins()) {
+		for (IPlugin plugin : core.getPluginController().getLoadedPlugins()) {
 
 			if (t.toString().contains(plugin.getType())) {
 				loadedPluginsByType.add((T) plugin);
-				System.out.println(loadedPluginsByType.size());
 			}
 
 			System.out.println();

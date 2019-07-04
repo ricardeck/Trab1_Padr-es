@@ -20,6 +20,7 @@ public class Core implements ICore {
 		pluginController = new PluginController();
 		uiController.initialize();
 		pluginController.initialize(this);
+
 	}
 
 	@Override
