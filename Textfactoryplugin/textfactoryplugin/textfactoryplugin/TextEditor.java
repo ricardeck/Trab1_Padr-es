@@ -2,7 +2,7 @@ package textfactoryplugin;
 
 import interfaces.IDocumentEditor;
 
-public class TextEditor implements IDocumentEditor{
+public class TextEditor implements IDocumentEditor {
 
 	@Override
 	public boolean open() {

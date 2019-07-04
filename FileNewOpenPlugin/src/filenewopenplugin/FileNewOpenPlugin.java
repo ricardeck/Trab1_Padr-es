@@ -36,4 +36,9 @@ public class FileNewOpenPlugin implements IPlugin {
 
         return true;
     }
+
+	@Override
+	public String getType() {
+		return "File";
+	}
 }

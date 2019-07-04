@@ -15,22 +15,23 @@ import interfaces.IUIController;
  */
 public class Core implements ICore {
 
-    public Core() {
-        uiController = new UIController();
-        pluginController = new PluginController();
-        uiController.initialize();
-        pluginController.initialize(this);
-    }
-    @Override
-    public IUIController getUIController() {
-        return uiController;
-    }
+	public Core() {
+		uiController = new UIController();
+		pluginController = new PluginController();
+		uiController.initialize();
+		pluginController.initialize(this);
+	}
 
-    @Override
-    public IPluginController getPluginController() {
-        return pluginController;
-    }
-    
-    private IUIController uiController;
-    private IPluginController pluginController;
+	@Override
+	public IUIController getUIController() {
+		return uiController;
+	}
+
+	@Override
+	public IPluginController getPluginController() {
+		return pluginController;
+	}
+
+	private IUIController uiController;
+	private IPluginController pluginController;
 }

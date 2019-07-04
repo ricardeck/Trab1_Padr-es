@@ -10,6 +10,7 @@ package interfaces;
  * @author aluno
  */
 public interface ICore {
-    public IUIController getUIController();
-    public IPluginController getPluginController();
+	public IUIController getUIController();
+
+	public IPluginController getPluginController();
 }

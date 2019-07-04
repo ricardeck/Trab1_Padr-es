@@ -10,9 +10,15 @@ package interfaces;
  * @author aluno
  */
 public interface IDocumentFactory {
-    // Metodos para criacao dos tres produtos
-    
-    public String getSupportedExtensions(); // return "gif|png|jpg";
-    
-    public boolean isExtensionSupported(String fileExtension);
+	// Metodos para criacao dos tres produtos
+
+	public IDocumentSerializer createSerializer();
+
+	public IDocumentEditor createEditor();
+
+	public IDocumentValidator createValidator();
+
+	public String getSupportedExtensions(); // return "gif|png|jpg";
+
+	public boolean isExtensionSupported(String fileExtension);
 }

@@ -2,7 +2,7 @@ package textfactoryplugin;
 
 import interfaces.IDocumentSerializer;
 
-public class TextSerializer implements IDocumentSerializer{
+public class TextSerializer implements IDocumentSerializer {
 
 	@Override
 	public boolean load() {

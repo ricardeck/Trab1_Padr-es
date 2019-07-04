@@ -2,7 +2,7 @@ package textfactoryplugin;
 
 import interfaces.IDocumentValidator;
 
-public class TextValidator implements IDocumentValidator{
+public class TextValidator implements IDocumentValidator {
 
 	@Override
 	public boolean validate() {
