@@ -18,6 +18,8 @@ public class Core implements ICore {
 	public Core() {
 		uiController = new UIController();
 		pluginController = new PluginController();
+		autenticationController = new AutenticationController();
+		autenticationController.initialize();
 		uiController.initialize();
 		pluginController.initialize(this);
 
@@ -35,4 +37,10 @@ public class Core implements ICore {
 
 	private IUIController uiController;
 	private IPluginController pluginController;
+	private AutenticationController autenticationController;
+	
+	@Override
+	public AutenticationController getAutenticationController() {
+		return autenticationController;
+	}
 }

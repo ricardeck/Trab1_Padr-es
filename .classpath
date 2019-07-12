@@ -5,6 +5,8 @@
 	<classpathentry kind="src" path="FileNewOpenPlugin/src"/>
 	<classpathentry kind="src" path="Interfaces/src"/>
 	<classpathentry kind="src" path="Textfactoryplugin/textfactoryplugin"/>
+	<classpathentry kind="src" path="PasswordFactoryPlugin"/>
+	<classpathentry kind="src" path="BiometryFactoryPlugin"/>
 	<classpathentry kind="lib" path="Application/plugins/FileNewOpenPlugin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
