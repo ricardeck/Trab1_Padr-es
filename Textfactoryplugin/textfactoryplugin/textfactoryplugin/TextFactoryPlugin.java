@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
+
+import application.AutenticationController;
 import application.UIController;
 import interfaces.ICore;
 import interfaces.IDocumentEditor;
@@ -15,7 +17,7 @@ import interfaces.IPluginController;
 import interfaces.IUIController;
 
 public class TextFactoryPlugin implements IPlugin, IDocumentFactory {
-	String fileExtension;
+	private String fileExtension;
 
 	@Override
 	public boolean initialize(ICore core) {

@@ -14,15 +14,23 @@ import interfaces.IUIController;
  * @author aluno
  */
 public class Core implements ICore {
+	
+	private static Core instance = null;
 
-	public Core() {
-		uiController = new UIController();
-		pluginController = new PluginController();
-		autenticationController = new AutenticationController();
+	private Core() {
+		uiController = UIController.getInstance();
+		pluginController = PluginController.getInstance();
+		autenticationController = AutenticationController.getInstance();
 		autenticationController.initialize();
 		uiController.initialize();
 		pluginController.initialize(this);
 
+	}
+	
+	public static Core getInstance() {
+		if (instance ==  null)
+			instance = new Core();
+		return instance;
 	}
 
 	@Override

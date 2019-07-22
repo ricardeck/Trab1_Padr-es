@@ -22,7 +22,18 @@ import java.util.logging.Logger;
  * @author aluno
  */
 public class PluginController implements IPluginController {
-
+	
+	private static PluginController instance = null;
+	
+	public static PluginController getInstance() {
+		if (instance ==  null)
+			instance = new PluginController();
+		return instance;
+	}
+	
+	private PluginController() {
+	}
+	
 	@Override
 	public boolean initialize(ICore core) {
 		File currentDir = new File("./Application/plugins");
