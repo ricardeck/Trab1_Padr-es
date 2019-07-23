@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package application;
 
 import interfaces.ICore;
@@ -22,18 +17,20 @@ import java.util.logging.Logger;
  * @author aluno
  */
 public class PluginController implements IPluginController {
-	
+
+	private List<IPlugin> loadedPlugins = new ArrayList<IPlugin>();
 	private static PluginController instance = null;
-	
+
+	private PluginController() {
+	}
+
 	public static PluginController getInstance() {
-		if (instance ==  null)
+		if (instance == null)
 			instance = new PluginController();
 		return instance;
 	}
-	
-	private PluginController() {
-	}
-	
+
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean initialize(ICore core) {
 		File currentDir = new File("./Application/plugins");
@@ -69,6 +66,7 @@ public class PluginController implements IPluginController {
 		return loadedPlugins;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public <T> List<T> getPluginsByType(T t, ICore core) {
 		List<T> loadedPluginsByType = new ArrayList<>();
@@ -78,13 +76,8 @@ public class PluginController implements IPluginController {
 			if (t.toString().contains(plugin.getType())) {
 				loadedPluginsByType.add((T) plugin);
 			}
-
 			System.out.println();
-
 		}
-
 		return loadedPluginsByType;
 	}
-
-	private List<IPlugin> loadedPlugins = new ArrayList<IPlugin>();
 }

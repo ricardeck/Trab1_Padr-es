@@ -4,7 +4,7 @@ import interfaces.IAutenticationBackEnd;
 import interfaces.ICore;
 import interfaces.IPlugin;
 
-public class PasswordFactoryPlugin implements IPlugin, IAutenticationBackEnd{
+public class PasswordFactoryPlugin implements IPlugin, IAutenticationBackEnd {
 
 	@Override
 	public boolean initialize(ICore core) {

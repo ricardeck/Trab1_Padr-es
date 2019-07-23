@@ -1,19 +1,15 @@
 package textfactoryplugin;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 
-import application.AutenticationController;
-import application.UIController;
 import interfaces.ICore;
 import interfaces.IDocumentEditor;
 import interfaces.IDocumentFactory;
 import interfaces.IDocumentSerializer;
 import interfaces.IDocumentValidator;
 import interfaces.IPlugin;
-import interfaces.IPluginController;
 import interfaces.IUIController;
 
 public class TextFactoryPlugin implements IPlugin, IDocumentFactory {
@@ -77,17 +73,17 @@ public class TextFactoryPlugin implements IPlugin, IDocumentFactory {
 
 	@Override
 	public IDocumentSerializer createSerializer() {
-		return new TextSerializer();
+		return TextSerializer.getInstance();
 	}
 
 	@Override
 	public IDocumentEditor createEditor() {
-		return new TextEditor();
+		return TextEditor.getInstance();
 	}
 
 	@Override
 	public IDocumentValidator createValidator() {
-		return new TextValidator();
+		return TextValidator.getInstance();
 	}
 
 	@Override

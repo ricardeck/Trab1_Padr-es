@@ -1,7 +1,5 @@
 package application;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -17,7 +15,7 @@ public class AutenticationController implements IAutenticationController {
 	private String nomeClasse;
 	private IAutenticationBackEnd autenticationBackEnd;
 	private static AutenticationController instance = null;
-	
+
 	private AutenticationController() {
 		try {
 			this.lerXML();
@@ -26,9 +24,9 @@ public class AutenticationController implements IAutenticationController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static AutenticationController getInstance() {
-		if (instance ==  null)
+		if (instance == null)
 			instance = new AutenticationController();
 		return instance;
 	}
@@ -38,16 +36,12 @@ public class AutenticationController implements IAutenticationController {
 		System.out.println(autenticationBackEnd.getAutentication());
 		return true;
 	}
-	
+
 	public void lerXML() throws ParserConfigurationException, SAXException, IOException {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		
 		DocumentBuilder builder = factory.newDocumentBuilder();
-		
 		Document doc = builder.parse("classe.xml");
-		
 		this.nomeClasse = doc.getElementsByTagName("classe").item(0).getTextContent();
-		
 	}
 
 }

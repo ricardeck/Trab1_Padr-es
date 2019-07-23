@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package application;
 
 import interfaces.IDocumentFactory;
@@ -20,17 +15,18 @@ import javax.swing.JMenuItem;
  */
 public class UIController implements IUIController {
 
+	private MainWindow mainWindow;
 	private static UIController instance = null;
-	
+
+	private UIController() {
+	}
+
 	public static UIController getInstance() {
-		if (instance ==  null)
+		if (instance == null)
 			instance = new UIController();
 		return instance;
 	}
-	
-	private UIController() {
-	}
-	
+
 	@Override
 	public boolean initialize() {
 		mainWindow = new MainWindow();
@@ -59,13 +55,9 @@ public class UIController implements IUIController {
 
 		JMenuItem myMenuItem = new JMenuItem(menuItemName);
 		myMenu.add(myMenuItem);
-
 		mainWindow.pack();
-
 		return myMenuItem;
 	}
-
-	private MainWindow mainWindow;
 
 	@Override
 	public List<IDocumentFactory> getPluginsByType(IDocumentFactory iDocumentFactory) {
