@@ -16,16 +16,6 @@ import javax.swing.JMenuItem;
 public class UIController implements IUIController {
 
 	private MainWindow mainWindow;
-	private static UIController instance = null;
-
-	private UIController() {
-	}
-
-	public static UIController getInstance() {
-		if (instance == null)
-			instance = new UIController();
-		return instance;
-	}
 
 	@Override
 	public boolean initialize() {

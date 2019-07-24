@@ -5,12 +5,14 @@ import interfaces.IPlugin;
 import interfaces.IUIController;
 import javax.swing.JMenuItem;
 
+import biometryfactoryplugin.BiometryFactoryPlugin;
+
 /**
  *
  * @author aluno
  */
 public class FileNewOpenPlugin implements IPlugin {
-
+	
 	@Override
 	public boolean initialize(ICore core) {
 		IUIController uiController = core.getUIController();

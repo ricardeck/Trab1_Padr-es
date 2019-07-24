@@ -1,6 +1,9 @@
 package application;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -10,25 +13,25 @@ import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 import interfaces.IAutenticationBackEnd;
 import interfaces.IAutenticationController;
+import interfaces.IPlugin;
 
 public class AutenticationController implements IAutenticationController {
 	private String nomeClasse;
 	private IAutenticationBackEnd autenticationBackEnd;
 	private static AutenticationController instance = null;
 
-	private AutenticationController() {
+	public AutenticationController() {
 		try {
 			this.lerXML();
-			autenticationBackEnd = (IAutenticationBackEnd) Class.forName(nomeClasse).newInstance();
+			Object o = null;
+			Class cls = Class.forName(nomeClasse);
+			Constructor constructor = cls.getDeclaredConstructor();
+			Method singleton = cls.getMethod("getInstance", new Class[0]);
+			o = singleton.invoke(null, null);
+			autenticationBackEnd = (IAutenticationBackEnd) o;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	public static AutenticationController getInstance() {
-		if (instance == null)
-			instance = new AutenticationController();
-		return instance;
 	}
 
 	@Override

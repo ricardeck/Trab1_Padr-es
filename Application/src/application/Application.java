@@ -5,6 +5,8 @@
  */
 package application;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  *
  * @author aluno
@@ -13,8 +15,14 @@ public class Application {
 
 	/**
 	 * @param args the command line arguments
+	 * @throws InvocationTargetException 
+	 * @throws IllegalArgumentException 
+	 * @throws SecurityException 
+	 * @throws NoSuchMethodException 
+	 * @throws InstantiationException 
+	 * @throws IllegalAccessException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException, InstantiationException, IllegalAccessException {
 		Core.getInstance();
 	}
 

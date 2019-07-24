@@ -4,6 +4,10 @@ import interfaces.ICore;
 import interfaces.IPlugin;
 import interfaces.IPluginController;
 import java.io.File;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -19,20 +23,10 @@ import java.util.logging.Logger;
 public class PluginController implements IPluginController {
 
 	private List<IPlugin> loadedPlugins = new ArrayList<IPlugin>();
-	private static PluginController instance = null;
-
-	private PluginController() {
-	}
-
-	public static PluginController getInstance() {
-		if (instance == null)
-			instance = new PluginController();
-		return instance;
-	}
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public boolean initialize(ICore core) {
+	public boolean initialize(ICore core) throws NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException, InstantiationException, IllegalAccessException {
 		File currentDir = new File("./Application/plugins");
 		String[] plugins = currentDir.list();
 		int i;
@@ -45,19 +39,26 @@ public class PluginController implements IPluginController {
 				Logger.getLogger(PluginController.class.getName()).log(Level.SEVERE, null, ex);
 			}
 		URLClassLoader ulc = new URLClassLoader(jars);
+		
 		for (i = 0; i < plugins.length; i++) {
 			String pluginName = plugins[i].split("\\.")[0];
 			IPlugin plugin = null;
+			Object o = null;
 			try {
-				plugin = (IPlugin) Class.forName(pluginName.toLowerCase() + "." + pluginName, true, ulc).newInstance();
-			} catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+				Class c = Class.forName(pluginName.toLowerCase() + "." + pluginName, true, ulc);
+				Constructor constructor = c.getDeclaredConstructor();
+				if(Modifier.isPrivate(constructor.getModifiers())) {
+					Method singleton = c.getDeclaredMethod("getInstance");
+					o = singleton.invoke(null, null);
+				}else
+					o = (IPlugin) Class.forName(pluginName.toLowerCase() + "." + pluginName, true, ulc).newInstance();
+			} catch (ClassNotFoundException ex) {
 				Logger.getLogger(PluginController.class.getName()).log(Level.SEVERE, null, ex);
 			}
-			if (plugin != null)
-				if (plugin.initialize(core))
-					loadedPlugins.add(plugin);
+			if (o != null)
+				if (((IPlugin) o).initialize(core))
+					loadedPlugins.add((IPlugin) o);
 		}
-
 		return true;
 	}
 
