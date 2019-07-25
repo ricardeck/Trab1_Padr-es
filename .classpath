@@ -9,7 +9,8 @@
 	<classpathentry kind="src" path="BiometryFactoryPlugin"/>
 	<classpathentry kind="src" path="Adapter"/>
 	<classpathentry kind="src" path="PDFFactoryPlugin"/>
+	<classpathentry kind="src" path="DocumentFactoryPlugin"/>
 	<classpathentry kind="lib" path="Application/plugins/FileNewOpenPlugin.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ricardo_loureiro/eclipse-workspace/Trab1_Padrões_Ricardo_Loureiro/Application/libs/pdfbox-app-2.0.16.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Loureiro/git/Trab_Padroes/Application/libs/pdfbox-app-2.0.16.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,6 +1,4 @@
-/adapter/
-/biometryfactoryplugin/
-/interfaces/
-/passwordfactoryplugin/
+/documentfactoryplugin/
+/application/
 /pdffactoryplugin/
 /textfactoryplugin/
