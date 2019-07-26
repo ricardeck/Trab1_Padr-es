@@ -1,5 +1,9 @@
 package interfaces;
 
+import java.io.IOException;
+
+import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
+
 /**
  *
  * @author aluno
@@ -14,5 +18,5 @@ public interface IDocumentFactory {
 
 	public String getSupportedExtensions();
 
-	public boolean isExtensionSupported(String fileExtension);
+	public boolean isExtensionSupported(String fileExtension) throws InvalidPasswordException, IOException;
 }

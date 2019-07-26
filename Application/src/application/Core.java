@@ -16,15 +16,17 @@ public class Core implements ICore {
 	private IUIController uiController;
 	private IPluginController pluginController;
 	private AutenticationController autenticationController;
+	private DocumentController documentController;
 
 	private Core() throws NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException, InstantiationException, IllegalAccessException {
 		uiController = new UIController();
 		pluginController = new PluginController();
 		autenticationController = new AutenticationController();
+		documentController = new DocumentController();
 		autenticationController.initialize();
 		uiController.initialize();
 		pluginController.initialize(this);
-
+		documentController.initialize(this);
 	}
 
 	public static Core getInstance() throws NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException, InstantiationException, IllegalAccessException {

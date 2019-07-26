@@ -1,5 +1,6 @@
-package documentfactoryplugin;
+package application;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.swing.JFileChooser;
@@ -11,25 +12,26 @@ import interfaces.IDocumentFactory;
 import interfaces.IDocumentSerializer;
 import interfaces.IDocumentValidator;
 import interfaces.IPlugin;
+import interfaces.IPluginController;
 import interfaces.IUIController;
 import pdffactoryplugin.PDFFactoryPlugin;
 
-public class DocumentFactoryPlugin implements IPlugin{
-	
-	
+public class DocumentController implements IPluginController {
+
 	private String fileExtension;
 	private String fileName = null;;
-	private static DocumentFactoryPlugin instance = null;
+//	private static DocumentController instance = null;
 	JFileChooser chooser2 = null;
-	private DocumentFactoryPlugin() {
-	}
-	
-	public static DocumentFactoryPlugin getInstance() {
-		if (instance == null)
-			instance = new DocumentFactoryPlugin();
-		return instance;
-	}
-	
+
+//	private DocumentController() {
+//	}
+//
+//	public static DocumentController getInstance() {
+//		if (instance == null)
+//			instance = new DocumentController();
+//		return instance;
+//	}
+
 	@Override
 	public boolean initialize(ICore core) {
 		IUIController uiController = core.getUIController();
@@ -46,14 +48,19 @@ public class DocumentFactoryPlugin implements IPlugin{
 					fileExtension = chooser.getSelectedFile().getAbsolutePath().split("\\.")[1];
 					boolean find = false;
 					for (Object object : compatiblePlugins) {
-						if(object instanceof IDocumentFactory) {
-						IDocumentFactory documentFactory = (IDocumentFactory) object;
-						if (documentFactory.isExtensionSupported(fileName) && fileName != null)
-							find = true;
+						if (object instanceof IDocumentFactory) {
+							IDocumentFactory documentFactory = (IDocumentFactory) object;
+							try {
+								if (documentFactory.isExtensionSupported(fileName) && fileName != null)
+									find = true;
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
 						}
 					}
 					if (!find)
-						System.out.println("Não foi encontrado um leitor para esse arquivo - " + fileName.split("\\.")[1]);
+						System.out.println(
+								"Não foi encontrado um leitor para esse arquivo - " + fileName.split("\\.")[1]);
 				}
 
 				else {
@@ -67,10 +74,14 @@ public class DocumentFactoryPlugin implements IPlugin{
 	}
 
 	@Override
-	public String getType() {
-		return "DocumentFactory";
+	public List<IPlugin> getLoadedPlugins() {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
-	
 
+	@Override
+	public <T> List<T> getPluginsByType(T t, ICore core) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
