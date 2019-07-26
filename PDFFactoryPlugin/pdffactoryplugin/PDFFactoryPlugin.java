@@ -58,59 +58,10 @@ public class PDFFactoryPlugin implements IPlugin, IDocumentFactory {
 
 	@Override
 	public boolean isExtensionSupported(String fileName) throws InvalidPasswordException, IOException {
-		fileExtension = fileName.split("\\.")[1];
-		for (String str : this.getSupportedExtensions().split("\\|")) {
-			if (str.equals(fileExtension)) {
-//				createEditor().open();
-
-//				File file = new File(fileName);
-//		        try {
-//		            PDFParser parser = new PDFParser(new RandomAccessBufferedFileInputStream(file));
-//		            parser.parse();
-//		            COSDocument cosDoc = parser.getDocument();
-//		            PDFTextStripper pdfStripper = new PDFTextStripper();
-//		            PDDocument pdDoc = new PDDocument(cosDoc);
-//		                pdfStripper.setStartPage(1);
-//		                pdfStripper.setEndPage(2);
-//		                String parsedText = pdfStripper.getText(pdDoc);
-//		                System.out.println("Página " + "1" + ": " + parsedText);
-//		                cosDoc.close();
-//		        } catch (IOException e) {
-//		            e.printStackTrace();
-//		        }
-
-				File file = new File(fileName);
-				PDDocument pdDocument = PDDocument.load(file);
-				PDFRenderer pdfRenderer = new PDFRenderer(pdDocument);
-				BufferedImage bufferedImage = pdfRenderer.renderImage(0);
-				ImageIO.write(bufferedImage, "JPEG", new File(fileExtension + ".jpg"));
-				File imgDir = new File(fileExtension + ".jpg");
-
-				Image image = ImageIO.read(imgDir);
-
-				ImageIcon imageIcon = new ImageIcon(image);
-
-				JFrame jFrame = new JFrame("Image Demo");
-				jFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-
-				JLabel jLabel = new JLabel();
-				jLabel.setIcon(imageIcon);
-				jFrame.getContentPane().add(jLabel, BorderLayout.CENTER);
-
-				jFrame.pack();
-				jFrame.setLocationRelativeTo(null);
-				jFrame.setSize(600, 700);
-				jFrame.setVisible(true);
-				pdDocument.close();
-				imgDir.delete();
-
-//				createSerializer().load();
-//				createSerializer().save();
-//				createValidator().validate();
-				return true;
-			}
+		if(createValidator().validate(fileName)) {
+			createEditor().open(fileName);
+			return true;
 		}
-
 		return false;
 	}
 
@@ -125,13 +76,13 @@ public class PDFFactoryPlugin implements IPlugin, IDocumentFactory {
 	}
 
 	@Override
-	public IDocumentValidator createValidator() {
-		return null;
+	public String getType() {
+		return "DocumentFactory";
 	}
 
 	@Override
-	public String getType() {
-		return "DocumentFactory";
+	public IDocumentValidator createValidator() {
+		return new PDFValidator();
 	}
 
 }

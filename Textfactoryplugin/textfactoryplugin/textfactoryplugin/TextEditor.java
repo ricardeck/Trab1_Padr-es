@@ -5,7 +5,7 @@ import interfaces.IDocumentEditor;
 public class TextEditor implements IDocumentEditor {
 
 	@Override
-	public boolean open() {
+	public boolean open(String fileName) {
 		System.out.println("documento aberto");
 		return true;
 	}

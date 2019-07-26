@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFileChooser;
@@ -18,19 +19,8 @@ import pdffactoryplugin.PDFFactoryPlugin;
 
 public class DocumentController implements IPluginController {
 
-	private String fileExtension;
 	private String fileName = null;;
-//	private static DocumentController instance = null;
-	JFileChooser chooser2 = null;
-
-//	private DocumentController() {
-//	}
-//
-//	public static DocumentController getInstance() {
-//		if (instance == null)
-//			instance = new DocumentController();
-//		return instance;
-//	}
+	private List<IPlugin> loadedPlugins = new ArrayList<IPlugin>();
 
 	@Override
 	public boolean initialize(ICore core) {
@@ -45,17 +35,19 @@ public class DocumentController implements IPluginController {
 				if (retorno == JFileChooser.APPROVE_OPTION) {
 					List compatiblePlugins = core.getPluginController().getPluginsByType(IDocumentFactory.class, core);
 					fileName = chooser.getSelectedFile().getAbsolutePath();
-					fileExtension = chooser.getSelectedFile().getAbsolutePath().split("\\.")[1];
 					boolean find = false;
 					for (Object object : compatiblePlugins) {
 						if (object instanceof IDocumentFactory) {
 							IDocumentFactory documentFactory = (IDocumentFactory) object;
-							try {
-								if (documentFactory.isExtensionSupported(fileName) && fileName != null)
+								if (documentFactory.createValidator().validate(fileName)) {
+									try {
+										System.out.println(documentFactory.createEditor().namePlugin());
+										documentFactory.createEditor().open(fileName);
+									} catch (IOException e) {
+										e.printStackTrace();
+									}
 									find = true;
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
+								}
 						}
 					}
 					if (!find)
@@ -75,13 +67,19 @@ public class DocumentController implements IPluginController {
 
 	@Override
 	public List<IPlugin> getLoadedPlugins() {
-		// TODO Auto-generated method stub
-		return null;
+		return loadedPlugins;
 	}
 
 	@Override
 	public <T> List<T> getPluginsByType(T t, ICore core) {
-		// TODO Auto-generated method stub
-		return null;
+		List<T> loadedPluginsByType = new ArrayList<>();
+
+		for (IPlugin plugin : core.getPluginController().getLoadedPlugins()) {
+
+			if (t.toString().contains(plugin.getType())) {
+				loadedPluginsByType.add((T) plugin);
+			}
+		}
+		return loadedPluginsByType;
 	}
 }

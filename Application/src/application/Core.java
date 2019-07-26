@@ -2,6 +2,7 @@ package application;
 
 import java.lang.reflect.InvocationTargetException;
 
+import interfaces.IAutenticationController;
 import interfaces.ICore;
 import interfaces.IPluginController;
 import interfaces.IUIController;
@@ -15,7 +16,7 @@ public class Core implements ICore {
 	private static Core instance = null;
 	private IUIController uiController;
 	private IPluginController pluginController;
-	private AutenticationController autenticationController;
+	private IAutenticationController autenticationController;
 	private DocumentController documentController;
 
 	private Core() throws NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException, InstantiationException, IllegalAccessException {
@@ -46,7 +47,7 @@ public class Core implements ICore {
 	}
 
 	@Override
-	public AutenticationController getAutenticationController() {
+	public IAutenticationController getAutenticationController() {
 		return autenticationController;
 	}
 }

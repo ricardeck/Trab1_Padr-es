@@ -11,5 +11,5 @@ public interface ICore {
 
 	public IPluginController getPluginController();
 	
-	public AutenticationController getAutenticationController();
+	public IAutenticationController getAutenticationController();
 }

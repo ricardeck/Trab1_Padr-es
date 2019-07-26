@@ -71,10 +71,10 @@ public class TextFactoryPlugin implements IPlugin, IDocumentFactory {
 		fileExtension = fileExtension.split("\\.")[1];
 		for (String str : this.getSupportedExtensions().split("\\|")) {
 			if (str.equals(fileExtension)) {
-				createEditor().open();
+//				createEditor().open(str);
 				createSerializer().load();
 				createSerializer().save();
-				createValidator().validate();
+//				createValidator().validate(fileExtension);
 				return true;
 			}
 		}

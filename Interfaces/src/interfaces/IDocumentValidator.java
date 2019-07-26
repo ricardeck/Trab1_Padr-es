@@ -2,6 +2,6 @@ package interfaces;
 
 public interface IDocumentValidator {
 
-	public boolean validate();
+	public boolean validate(String fileExtension);
 
 }
