@@ -6,12 +6,10 @@ import javax.swing.JMenuItem;
 
 /**
  *
- * @author aluno
+ * @author ricardeck
  */
 public interface IUIController {
 	public boolean initialize();
-
-	public List<IDocumentFactory> getPluginsByType(IDocumentFactory iDocumentFactory);
-
+	
 	public JMenuItem addMenuItem(String menuName, String menuItemName);
 }

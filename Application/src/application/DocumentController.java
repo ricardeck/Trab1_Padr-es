@@ -37,17 +37,17 @@ public class DocumentController implements IPluginController {
 					fileName = chooser.getSelectedFile().getAbsolutePath();
 					boolean find = false;
 					for (Object object : compatiblePlugins) {
-						if (object instanceof IDocumentFactory) {
-							IDocumentFactory documentFactory = (IDocumentFactory) object;
-								if (documentFactory.createValidator().validate(fileName)) {
-									try {
-										System.out.println(documentFactory.createEditor().namePlugin());
-										documentFactory.createEditor().open(fileName);
-									} catch (IOException e) {
-										e.printStackTrace();
-									}
-									find = true;
-								}
+						IDocumentFactory documentFactory = (IDocumentFactory) object;
+						if (documentFactory.createValidator().validate(fileName)) {
+							try {
+								System.out.println(documentFactory.createEditor().namePlugin());
+								documentFactory.createEditor().open(fileName);
+								documentFactory.createSerializer().load();
+								documentFactory.createSerializer().save();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+							find = true;
 						}
 					}
 					if (!find)

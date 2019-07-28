@@ -9,7 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 
 /**
  *
- * @author aluno
+ * @author ricardeck
  */
 public class Application {
 

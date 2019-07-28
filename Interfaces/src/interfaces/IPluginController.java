@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  *
- * @author aluno
+ * @author ricardeck
  */
 public interface IPluginController {
 	public boolean initialize(ICore core) throws NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException, InstantiationException, IllegalAccessException;

@@ -2,7 +2,7 @@ package interfaces;
 
 /**
  *
- * @author aluno
+ * @author ricardeck
  */
 public interface IPlugin {
 	

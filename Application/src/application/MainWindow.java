@@ -7,7 +7,7 @@ package application;
 
 /**
  *
- * @author aluno
+ * @author ricardeck
  */
 public class MainWindow extends javax.swing.JFrame {
 

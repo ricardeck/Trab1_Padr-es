@@ -4,7 +4,7 @@ import application.AutenticationController;
 
 /**
  *
- * @author aluno
+ * @author ricardeck
  */
 public interface ICore {
 	public IUIController getUIController();

@@ -9,7 +9,7 @@ import biometryfactoryplugin.BiometryFactoryPlugin;
 
 /**
  *
- * @author aluno
+ * @author ricardeck
  */
 public class FileNewOpenPlugin implements IPlugin {
 	

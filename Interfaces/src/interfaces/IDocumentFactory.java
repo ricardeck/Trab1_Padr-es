@@ -6,7 +6,7 @@ import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
 
 /**
  *
- * @author aluno
+ * @author ricardeck
  */
 public interface IDocumentFactory {
 
@@ -15,8 +15,4 @@ public interface IDocumentFactory {
 	public IDocumentEditor createEditor();
 
 	public IDocumentValidator createValidator();
-
-	public String getSupportedExtensions();
-
-	public boolean isExtensionSupported(String fileExtension) throws InvalidPasswordException, IOException;
 }

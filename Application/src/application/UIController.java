@@ -11,7 +11,7 @@ import javax.swing.JMenuItem;
 
 /**
  *
- * @author aluno
+ * @author ricardeck
  */
 public class UIController implements IUIController {
 
@@ -47,11 +47,5 @@ public class UIController implements IUIController {
 		myMenu.add(myMenuItem);
 		mainWindow.pack();
 		return myMenuItem;
-	}
-
-	@Override
-	public List<IDocumentFactory> getPluginsByType(IDocumentFactory iDocumentFactory) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

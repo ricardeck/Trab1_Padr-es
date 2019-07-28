@@ -9,7 +9,7 @@ import interfaces.IUIController;
 
 /**
  *
- * @author aluno
+ * @author ricardeck
  */
 public class Core implements ICore {
 

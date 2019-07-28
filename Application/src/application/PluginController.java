@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author aluno
+ * @author ricardeck
  */
 public class PluginController implements IPluginController {
 
@@ -77,7 +77,6 @@ public class PluginController implements IPluginController {
 			if (t.toString().contains(plugin.getType())) {
 				loadedPluginsByType.add((T) plugin);
 			}
-			System.out.println();
 		}
 		return loadedPluginsByType;
 	}

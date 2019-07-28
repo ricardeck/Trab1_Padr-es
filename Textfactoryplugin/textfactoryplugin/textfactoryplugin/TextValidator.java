@@ -15,20 +15,15 @@ public class TextValidator implements IDocumentValidator {
 	}
 	
 	public String getSupportedExtensions() {
-		return "txt|doc|odt";
+		return "txt|doc|odt|docx";
 	}
 
 	public boolean isExtensionSupported(String fileExtension) {
 		fileExtension = fileExtension.split("\\.")[1];
-		for (String str : this.getSupportedExtensions().split("\\|")) {
-			if (str.equals(fileExtension)) {
-//				createEditor().open();
-//				createSerializer().load();
-//				createSerializer().save();
-//				createValidator().validate();
+		for (String str : this.getSupportedExtensions().split("\\|")) 
+			if (str.equals(fileExtension)) 
 				return true;
-			}
-		}
+		
 
 		return false;
 	}
